@@ -1,5 +1,6 @@
 import java.awt.*;
-public class Grid {
+import javax.swing.JComponent;
+public class Grid extends JComponent{
 	public Grid() {
 		
 	}
