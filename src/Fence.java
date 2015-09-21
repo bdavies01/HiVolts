@@ -1,5 +1,5 @@
 import java.awt.*;
-public class Fence {
+public class Fence extends Unit{
 	public Fence() {
 		
 	}

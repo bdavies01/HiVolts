@@ -7,4 +7,9 @@ public class Grid extends JComponent{
 	public void paint(Graphics g) {
 		
 	}
+	public void drawLines(Graphics g) {
+		for(int i = 0; i < 14; i ++) {
+			
+		}
+	}
 }
