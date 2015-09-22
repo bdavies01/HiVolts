@@ -4,5 +4,6 @@ public class Unit {
 	public Unit(int xCoord, int yCoord) {
 		this.x = xCoord;
 		this.y = yCoord;
+		
 	}
 }
