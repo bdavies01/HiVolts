@@ -5,12 +5,16 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 public class Board extends JFrame{
 	public Board() {
-		Grid g = new Grid();
+		Grid grid = new Grid();
 		setLayout(new BorderLayout());
-		add(g, BorderLayout.CENTER);
+		add(grid, BorderLayout.CENTER);
 		pack();
 		setVisible(true);
-		g.setPreferredSize(new Dimension(598, 598));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		grid.setPreferredSize(new Dimension(598, 598));
 		setSize(568, 590);
+	}
+	public void creation() {
+		Fence f = new Fence(0, 0);
 	}
 }

@@ -4,9 +4,10 @@ public class Fence extends Unit{
 		super (x,y);
 	}
 	public void paint(Graphics g) {
+		g.setColor(Color.YELLOW);
 		drawFence(g);
 	}
 	public void drawFence(Graphics g) {
-		
+		g.fillRect(0, 0, 50, 50); 
 	}
 }
