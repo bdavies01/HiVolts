@@ -10,7 +10,7 @@ public class Board extends JFrame{
 		pack();
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(568, 590);
+		setSize(605, 624);
 		setTitle("Hivolts");
 	}
 }
