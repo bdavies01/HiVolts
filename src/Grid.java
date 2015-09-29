@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.JComponent;
 public class Grid extends JComponent{
 	private static final long serialVersionUID = 1L;
-	Fence f = new Fence(50, 50);
+	//Fence f = new Fence(50, 50);
 	Unit[][] tiles = new Unit[12][12];
 	public Grid() {
 		repaint();
@@ -10,21 +10,21 @@ public class Grid extends JComponent{
 	}
 	public void drawPerimeter() {
 		for(int i = 0; i<13; i++) {
-			tiles[0][i] = new Fence(0, 600/i);
-			tiles[12][i] = new Fence(600/i, 0);
-			tiles[i][0] = new Fence(550, 600/i);
-			tiles[i][12] = new Fence(600/i, 550);
+			tiles[0][i] = new Fence(0, 600/i, Color.RED);
+			tiles[12][i] = new Fence(600/i, 0, Color.RED);
+			tiles[i][0] = new Fence(550, 600/i, Color.RED);
+			tiles[i][12] = new Fence(600/i, 550, Color.RED);
 		}
 	}
-	public void paint(Graphics g) {
+	 /*public void paint(Graphics g) {
 		g.setColor(Color.BLACK);
 		drawLines(g);
 		for(int i = 0; i < 13; i++) {
 			for(int j = 0; j < 13; j++) {
-				tiles[i][j].getX()
+				tiles[i][j].paint(g);
 			}
 		}
-	}
+	} */
 	public void drawLines(Graphics g) {
 		for(int i = 0; i < 13; i ++) {
 			g.drawLine(0, 0 + (i * (590/12)), 590, 0 + (i * (590/12)));
