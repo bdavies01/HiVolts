@@ -17,17 +17,6 @@ public abstract class Unit {
 	public int getY() {
 		return ycoord;
 	}
-	public void setType(int t) {
-		type = t;
-	}
-	public int getType() {
-		return(type);
-	}
 	public void paint(Graphics g){
-		if(getType() == 0) {
-			
-		} else if(getType() == 1) {
-			
-		}
 	}
 }

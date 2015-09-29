@@ -4,12 +4,12 @@ public class Fence extends Unit{
 		xcoord = x;
 		ycoord = y;
 		c = color;
+		type = 1;
 	}
 	public void paint(Graphics g) {
 		drawFence(g);
 	}
 	public void drawFence(Graphics g) {
 		g.setColor(c);
-		g.fillRect(xcoord, ycoord, 50, 50); 
 	}
 }
