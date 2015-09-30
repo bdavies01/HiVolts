@@ -17,6 +17,8 @@ public abstract class Unit {
 	public int getY() {
 		return ycoord;
 	}
-	public void paint(Graphics g){
+	public void drawRects(Graphics g) {
+		g.setColor(c);
+		g.fillRect(getX(), getY(), 50, 50);
 	}
 }

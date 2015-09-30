@@ -3,23 +3,48 @@ import javax.swing.JComponent;
 public class Grid extends JComponent{
 	private static final long serialVersionUID = 1L;
 	//Unit[][] tiles = new Unit[12][12];
-	Box[][] tiles = new Box[12][12];
+	Unit[][] tiles = new Unit[12][12];
 	public Grid() {
 		repaint();
 		setPreferredSize(new Dimension(600, 600));
 	}
 	public void drawPerimeter() {
 		for(int i = 0; i<13; i++) {
-			tiles[0][i] = new Box(0, 600/i, Color.RED);
-			tiles[12][i] = new Box(600/i, 0, Color.RED);
-			tiles[i][0] = new Box(550, 600/i, Color.RED);
-			tiles[i][12] = new Box(600/i, 550, Color.RED);
+			if(i ==0) {
+				tiles[0][i] = new Fence(0, 600/(i+1), Color.RED);
+				tiles[11][i] = new Fence(600/(i+1), 0, Color.RED);
+				tiles[i][0] = new Fence(550, 600/(i+1), Color.RED);
+				tiles[i][11] = new Fence(600/(i+1), 550, Color.RED);
+			} else if(i ==12) {
+				tiles[0][i-1] = new Fence(0, 600/(i), Color.RED);
+				tiles[11][i-1] = new Fence(600/(i), 0, Color.RED);
+				tiles[i-1][0] = new Fence(550, 600/(i), Color.RED);
+				tiles[i-1][11] = new Fence(600/(i), 550, Color.RED);
+			}
+			else {
+				tiles[0][i] = new Fence(0, 600/i, Color.RED);
+				tiles[11][i] = new Fence(600/i, 0, Color.RED);
+				tiles[i][0] = new Fence(550, 600/i, Color.RED);
+				tiles[i][11] = new Fence(600/i, 550, Color.RED);
+			}
 		}
+	}
+	public void Draw(Graphics g){
+		for(Unit[] i: tiles){
+			for(Unit j: i){
+				if(j!=null){
+					j.drawRects(g);
+				}
+			}
+		}
+		
 	}
 	 public void paint(Graphics g) {
 		g.setColor(Color.BLACK);
 		drawLines(g);
-		try{
+		drawPerimeter();
+		Draw(g);
+		/*try{
 			for(int i = 0; i < 13; i++) {
 				for(int j = 0; j < 13; j++) {
 					tiles[i][j].setType(1);
@@ -28,7 +53,7 @@ public class Grid extends JComponent{
 			} 
 		} catch(NullPointerException e) {
 			
-		}
+		} */
 	} 
 	public void drawLines(Graphics g) {
 		for(int i = 0; i < 13; i ++) {
