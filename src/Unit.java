@@ -19,6 +19,6 @@ public abstract class Unit {
 	}
 	public void drawRects(Graphics g) {
 		g.setColor(c);
-		g.fillRect(getX(), getY(), 50, 50);
+		g.fillRect(getX()+10, getY() + 10, 30, 30);
 	}
 }
