@@ -1,16 +1,15 @@
 import java.awt.BorderLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Color;
+
 import javax.swing.JFrame;
+
 public class Board extends JFrame{
+	private static final long serialVersionUID = 1L;
+
 	public Board() {
-		Grid grid = new Grid();
-		setLayout(new BorderLayout());
-		add(grid, BorderLayout.CENTER);
-		pack();
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(605, 624);
-		setTitle("Hivolts");
+		Grid g = new Grid();
+		this.add(g, BorderLayout.CENTER);
+		setSize(785, 807);
+		setBackground(Color.GRAY);
 	}
 }
