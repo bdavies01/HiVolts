@@ -7,7 +7,7 @@ public class Grid extends JComponent{
 	private Fence[] fences = new Fence[64];
 	private static final long serialVersionUID = 1L;
 	public Grid() {
-		repaint();
+		init();
 	}
 	public void paint(Graphics g) {
 		drawGrid(g);
@@ -20,8 +20,12 @@ public class Grid extends JComponent{
 	}
 	public void draw(Graphics g) {
 		for (Fence f: fences) {
-			//f.draw(g, x, y);
+			f.draw(g, f.getX(), f.getY());
 		}
+	}
+	public void init() {
+		createFences();
+		//createMhos();
 	}
 	public void createFences() {
 		int wall_left = 44;
@@ -29,6 +33,7 @@ public class Grid extends JComponent{
 			for(int j=0; j<grid[i].length; j++){
 				if((i==0 || j==0)||(i==11 || j==11)){
 					Fence f = new Fence(i,j);
+					System.out.println("Success");
 					grid[i][j] = f;
 					wall_left -= 1;
 					fences[wall_left+20] = f;
