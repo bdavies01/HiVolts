@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 
 public class Board extends JFrame implements KeyListener{
 	private static final long serialVersionUID = 1L;
-
 	public Board() {
 		Grid g = new Grid();
 		this.add(g, BorderLayout.CENTER);

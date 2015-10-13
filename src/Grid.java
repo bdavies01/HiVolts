@@ -93,7 +93,6 @@ public class Grid extends JComponent{
 			randomx = (int) (Math.random() * 12);
 			randomy = (int) (Math.random() * 12);
 			if((grid[randomx][randomy] == null)) {
-				System.out.println("Success");
 				p = new Player(randomx, randomy);
 				grid[randomx][randomy] = p;
 				playersleft--;

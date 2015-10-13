@@ -6,4 +6,10 @@ abstract class Entity extends Tile{
 	public void move() {
 		
 	}
+	public void isLegit() {
+		
+	}
+	public void destroy() {
+		
+	}
 }
