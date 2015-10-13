@@ -30,9 +30,4 @@ public class Tile {
 	public void setY(int y) {
 		this.y = y;
 	}
-	public void draw(Graphics g) {
-		g.setColor(Color.YELLOW);
-		g.fillRect(x+7, y+7, 10, 50);
-		g.fillRect(x + 57, y+47, 10, 50);
-	}
 }
