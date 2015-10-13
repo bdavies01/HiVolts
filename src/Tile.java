@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Graphics;
 
 public class Tile {
 	private int x, y, width, height;
