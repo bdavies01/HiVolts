@@ -8,13 +8,18 @@ public class Grid extends JComponent{
 	public Tile[][] grid = new Tile[12][12];
 	private Fence[] fences = new Fence[44];
 	private Fence[] rfences = new Fence[20];
-	public Player p;
+	private Player p;
 	private int newX = 0;
 	private int newY = 0;
+	private int changex= 0;
+	private int changey = 0;
 	private static final long serialVersionUID = 1L;
-	public Grid() {
+	public Grid(Keyboard k) {
 		init();
 		repaint();
+		addKeyListener(k);
+		changex = k.getChangeX();
+		changey = k.getChangeY();
 	}
 	public void paint(Graphics g) {
 		g.setColor(Color.gray);
@@ -44,6 +49,7 @@ public class Grid extends JComponent{
 	public void init() {
 		createFences();
 		createMhos();
+		createPlayer();
 	}
 	public void createFences() {
 		int wall_left = 44;
@@ -96,30 +102,15 @@ public class Grid extends JComponent{
 			if((grid[randomx][randomy] == null)) {
 				p = new Player(randomx, randomy);
 				grid[randomx][randomy] = p;
-				System.out.println(randomx);
-				System.out.println(randomy);
 				playersleft--;
 			}
 		}
 	}
 	public void destroy(Tile t) {
 		grid[t.getX() /64][t.getY() /64] = null;
-		
 	}
-	public void up(Tile t) {
-		newX = t.getX()/64 ;
-		newY = t.getY()/64 ;
-		grid[(t.getX() / 64)][(t.getY() /64)] = null;
-		Player n = new Player(newX + 2, newY + 2);
-		grid[newX][newY] = n;
-	}
-	public void down(Tile t) {
-		
-	}
-	public void left(Tile t) {
-		
-	}
-	public void right(Tile t) {
+	public void move(Player p, int x, int y) {
+		destroy(p);
 		
 	}
 }
