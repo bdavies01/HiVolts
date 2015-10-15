@@ -10,3 +10,4 @@ public class Player extends Entity{
 		g.fillRect(x + 10, y + 10, 46, 46);
 	}
 }
+

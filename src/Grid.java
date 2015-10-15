@@ -4,19 +4,20 @@ import javax.swing.JComponent;
 import java.lang.Math;
 
 public class Grid extends JComponent{
-	private Mho[] mhos = new Mho[12];
+	public Mho[] mhos = new Mho[12];
 	public Tile[][] grid = new Tile[12][12];
 	private Fence[] fences = new Fence[44];
 	private Fence[] rfences = new Fence[20];
 	private Player p;
+	private boolean mhosdead = false;
 	private int newX = 0;
 	private int newY = 0;
 	private int changex= 0;
 	private int changey = 0;
 	private static final long serialVersionUID = 1L;
 	public Grid(Keyboard k) {
-		init();
 		repaint();
+		init();
 		addKeyListener(k);
 		changex = k.getChangeX();
 		changey = k.getChangeY();
@@ -106,11 +107,8 @@ public class Grid extends JComponent{
 			}
 		}
 	}
-	public void destroy(Tile t) {
-		grid[t.getX() /64][t.getY() /64] = null;
-	}
-	public void move(Player p, int x, int y) {
-		destroy(p);
-		
+	public void update() {
+		System.out.println("test");
+		repaint();
 	}
 }
