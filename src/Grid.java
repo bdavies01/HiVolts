@@ -9,18 +9,11 @@ public class Grid extends JComponent{
 	private Fence[] fences = new Fence[44];
 	private Fence[] rfences = new Fence[20];
 	private Player p;
-	private boolean mhosdead = false;
-	private int newX = 0;
-	private int newY = 0;
-	private int changex= 0;
-	private int changey = 0;
+	private boolean dead;
 	private static final long serialVersionUID = 1L;
-	public Grid(Keyboard k) {
+	public Grid() {
 		repaint();
 		init();
-		addKeyListener(k);
-		changex = k.getChangeX();
-		changey = k.getChangeY();
 	}
 	public void paint(Graphics g) {
 		g.setColor(Color.gray);
@@ -108,7 +101,66 @@ public class Grid extends JComponent{
 		}
 	}
 	public void update() {
-		System.out.println("test");
+		//System.out.println("test");
 		repaint();
+	}
+	public void moveplayer(int x, int y){
+		int oldx = p.getX();
+		int oldy = p.getX();
+		int newx = (p.getX()) + x;
+		int newy = (p.getY()) + y;
+//		System.out.println(p.getX());
+//		System.out.println(p.getY());
+//		System.out.println(newx);
+//		System.out.println(newy);
+		if((grid[newx][newy] instanceof Fence) || (grid[newx][newy] instanceof Mho)) {
+			grid[oldx][oldy] = null;
+		} else {
+			grid[oldx][oldy] = null;
+			grid[newx][newy] = p;
+			p.changeX(newx);
+			p.changeY(newy);
+		}
+	}
+	public void jump() {
+		int oldx = p.getX();
+		int oldy = p.getX();
+		int newx = (int)(Math.random() * 12);
+		int newy = (int)(Math.random() * 12);
+		if(grid[newx][newy] instanceof Fence) {
+			jump();
+		} else if(grid[newx][newy] instanceof Mho) {
+			grid[oldx][oldy] = null;
+			grid[newx][newy] = p;
+			p.changeX(newx);
+			p.changeY(newy);
+		}
+		else {
+			grid[oldx][oldy] = null;
+			grid[newx][newy] = p;
+			p.changeX(newx);
+			p.changeY(newy);
+		}
+	}
+	/**
+	 * mho move logic
+	 */
+	public void movemho() {
+		dead = true;
+		int mx = 0;
+		int my = 0;
+		for(int i = 0; i < mhos.length; i++) {
+			if(mhos[i] != null) {
+				mx = mhos[i].getX();
+				my = mhos[i].getY();
+			}
+		}
+		for(Tile[] t : grid) {
+			for(Tile tile : t) {
+				if(tile instanceof Mho) {
+					dead = false;
+				}
+			}
+		}
 	}
 }

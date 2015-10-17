@@ -36,6 +36,7 @@ public class Keyboard implements KeyListener{
 		case 'w':
 			changex = 0;
 			changey = 1;
+			System.out.println(key);
 			break;
 		case 'a':
 			changex = -1;

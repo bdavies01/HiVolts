@@ -3,8 +3,7 @@ import javax.swing.JFrame;
 public class Main {
 
 	public static void main(String[] args) {
-		Keyboard k = new Keyboard();
-		Board b = new Board(k);
+		Board b = new Board();
 		b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		b.setVisible(true);
 	}
