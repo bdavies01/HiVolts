@@ -15,7 +15,6 @@ public class Board extends JFrame implements KeyListener{
 		setSize(785, 807);
 		setBackground(Color.GRAY);
 		setTitle("Hivolts");
-		g.update();
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -28,66 +27,91 @@ public class Board extends JFrame implements KeyListener{
 		char key = e.getKeyChar();
 		switch(key) {
 		case 'w':
-			changex = 0;
-			changey = -1;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = 0;
+				changey = -1;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'a':
-			changex = -1;
-			changey = 0;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = -1;
+				changey = 0;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 's':
-			changex = 0;
-			changey = 0;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = 0;
+				changey = 0;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'd': 
-			changex = 1;
-			changey = 0;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = 1;
+				changey = 0;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'z':
-			changex = -1;
-			changey = 1;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = -1;
+				changey = 1;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'x':
-			changex = 0;
-			changey = 1;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = 0;
+				changey = 1;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'c': 
-			changex = 1;
-			changey = 1;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = 1;
+				changey = 1;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'e':
-			changex = 1;
-			changey = -1;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = 1;
+				changey = -1;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'q': 
-			changex = -1;
-			changey = -1;
-			g.moveplayer(changex, changey);
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				changex = -1;
+				changey = -1;
+				g.moveplayer(changex, changey);
+				g.movemho();
+			}
 			break;
 		case 'j': 
-			g.jump();
-			g.movemho();
+			if(g.state == g.state.PLAYING) {
+				g.jump();
+				g.movemho();
+			}
 			break;
 		default: 
 			System.out.println("Rekt.");
 			break;
+		}
+		if(g.state == g.state.WON) {
+			win();
+		} else if (g.state == g.state.LOST) {
+			lose();
 		}
 		g.repaint();
 	}
@@ -95,5 +119,13 @@ public class Board extends JFrame implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	public void win() {
+		this.dispose();
+		Win w = new Win();
+	}
+	public void lose() {
+		this.dispose();
+		Lose l = new Lose();
 	}
 }

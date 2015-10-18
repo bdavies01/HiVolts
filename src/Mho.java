@@ -6,7 +6,9 @@ public class Mho extends Entity{
 		super(x, y);
 	}
 	public void draw(Graphics g, int x, int y) {
-		g.setColor(Color.RED);
-		g.fillOval(x+7, y+7, 50, 50);
+		if(this.isValid()){
+			g.setColor(Color.RED);
+			g.fillOval(x+7, y+7, 50, 50);
+		}
 	}
 }

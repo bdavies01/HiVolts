@@ -6,8 +6,14 @@ public class Player extends Entity{
 		super(x, y);
 	}
 	public void draw(Graphics g, int x, int y) {
-		g.setColor(Color.BLUE);
-		g.fillRect(x + 10, y + 10, 46, 46);
+		if(this.isValid()){
+			g.setColor(Color.BLUE);
+			g.fillRect(x + 10, y + 10, 46, 46);
+		}
+	}
+	public void kill(Graphics g) {
+		g.setColor(Color.GRAY);
+		g.fillRect(this.getX(), this.getY(), 46, 46);
 	}
 }
 

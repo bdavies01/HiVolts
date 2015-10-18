@@ -5,6 +5,10 @@ import java.lang.Math;
 
 public class Grid extends JComponent{
 	public Mho[] mhos = new Mho[12];
+	public enum gameState {
+		PLAYING, WON, LOST
+	}
+	gameState state;
 	public Tile[][] grid = new Tile[12][12];
 	private Fence[] fences = new Fence[44];
 	private Fence[] rfences = new Fence[20];
@@ -41,6 +45,7 @@ public class Grid extends JComponent{
 		p.draw(g, p.getX() * 64, p.getY() * 64);
 	}
 	public void init() {
+		state = state.PLAYING;
 		createFences();
 		createMhos();
 		createPlayer();
@@ -100,21 +105,18 @@ public class Grid extends JComponent{
 			}
 		}
 	}
-	public void update() {
-		//System.out.println("test");
-		repaint();
+	public void killSequence(Graphics g) {
+		
 	}
 	public void moveplayer(int x, int y){
 		int oldx = p.getX();
 		int oldy = p.getX();
 		int newx = (p.getX()) + x;
 		int newy = (p.getY()) + y;
-//		System.out.println(p.getX());
-//		System.out.println(p.getY());
-//		System.out.println(newx);
-//		System.out.println(newy);
 		if((grid[newx][newy] instanceof Fence) || (grid[newx][newy] instanceof Mho)) {
 			grid[oldx][oldy] = null;
+			p.setValid(false);
+			state = state.LOST;
 		} else {
 			grid[oldx][oldy] = null;
 			grid[newx][newy] = p;
@@ -131,9 +133,8 @@ public class Grid extends JComponent{
 			jump();
 		} else if(grid[newx][newy] instanceof Mho) {
 			grid[oldx][oldy] = null;
-			grid[newx][newy] = p;
-			p.changeX(newx);
-			p.changeY(newy);
+			p.setValid(false);
+			state = state.LOST;
 		}
 		else {
 			grid[oldx][oldy] = null;
@@ -147,18 +148,26 @@ public class Grid extends JComponent{
 	 */
 	public void movemho() {
 		dead = true;
-		int mx = 0;
-		int my = 0;
+		int mx, my, px, py, dx, dy;
 		for(int i = 0; i < mhos.length; i++) {
-			if(mhos[i] != null) {
+			if(mhos[i] != null && dead) {
 				mx = mhos[i].getX();
 				my = mhos[i].getY();
+				px = p.getX();
+				py = p.getY();
+				dx = mx -px;
+				dy = my - py;
+				if((dx > 0) && (my == py)) {
+					mhos[i].changeX(mx -1);
+				} else if((dx < 0) && (my == py)) {
+					mhos[i].changeX(mx +1);
+				}
 			}
 		}
 		for(Tile[] t : grid) {
 			for(Tile tile : t) {
 				if(tile instanceof Mho) {
-					dead = false;
+					//state = state.LOST;
 				}
 			}
 		}
