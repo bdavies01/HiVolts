@@ -249,6 +249,8 @@ public class Grid extends JComponent{
 			} else if (grid[m.getX()][m.getY()+1] instanceof Player) {
 				state = state.LOST;
 			} else {
+				grid[m.getX()][m.getY() + 1] = m;
+				grid[m.getX()][m.getY()] = null;
 				m.changeY(m.getY() + 1);
 			}
 		} else {
